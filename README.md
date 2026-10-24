@@ -143,7 +143,7 @@ More: My job task by task, a skill tree with proof questions, interview practice
 │   └── src/lib/             # API client, i18n (EN / BM / 中文), auth
 ├── runpod/
 │   └── ocr/                 # RunPod Serverless OCR worker: handler.py, Dockerfile
-├── submission/              # SDC submission PDFs (Preliminary, Tech Declaration, pitch deck)
+├── submission/              # SDC submission PDFs (Preliminary, Tech Declaration, pitch deck, Replit and RunPod proof of use)
 ├── docs/                    # PRD, TRD, how it works, user manual, decisions, review log, media/ GIFs
 ├── .github/workflows/       # ci.yml (tests and build), cron.yml (keep-awake, weekly refresh, digests)
 ├── docker-compose.yml       # whole app in one command
