@@ -30,7 +30,7 @@
 | GitHub Repository | <https://github.com/tanhongsheng050204-code/SDC-HACKATHON-2026-XMUM---Made-In-UTM> |
 | Live Demo | **<https://laluan-psi.vercel.app>** (no sign-up; API docs at <https://laluan-api.onrender.com/docs>) |
 | Replit | Validation sandbox for the app; see [How We Use Replit](#how-we-use-replit-required) and the [proof of use (PDF)](submission/SDC2026_MadeInUTM_Replit_POU.pdf) |
-| RunPod Endpoints | [Qwen2.5-7B CV reader](https://console.runpod.io/serverless/user/endpoint/tkz2ystb9e77tu) · [faster-whisper voice](https://console.runpod.io/serverless/user/endpoint/m7wj9nadqy9v82) · [OCR worker](https://console.runpod.io/serverless/user/endpoint/lsamu8q64cbso5) (RunPod console, team login); see [How We Use RunPod](#how-we-use-runpod-required) and the [proof of use (PDF)](submission/SDC2026_MadeInUTM_Runpod_POU.pdf) |
+| RunPod Endpoints | [Qwen2.5-7B CV reader](https://api.runpod.ai/v2/tkz2ystb9e77tu/runsync) · [faster-whisper voice](https://api.runpod.ai/v2/m7wj9nadqy9v82/runsync) · [OCR worker](https://api.runpod.ai/v2/lsamu8q64cbso5/runsync) (POST with the team API key); see [How We Use RunPod](#how-we-use-runpod-required) and the [proof of use (PDF)](submission/SDC2026_MadeInUTM_Runpod_POU.pdf) |
 | Slide Deck | [`submission/SDC2026_MadeInUTM_PitchDeck.pdf`](submission/SDC2026_MadeInUTM_PitchDeck.pdf) (17 slides; editable [.pptx](docs/submission/Laluan_Pitch_Deck.pptx)) |
 | Demo Video | **<https://www.youtube.com/watch?v=8IJ64e0ftos>** (pitch and live demo, 6:57) |
 | Preliminary Proposal | [`submission/SDC2026_MadeInUTM_Preliminary.pdf`](submission/SDC2026_MadeInUTM_Preliminary.pdf) |
@@ -238,9 +238,9 @@ Our three Serverless endpoints (the console pages need the team's RunPod login; 
 
 | Endpoint | Endpoint ID | API URL | RunPod console |
 | --- | --- | --- | --- |
-| Qwen2.5-7B-Instruct (vLLM) | `tkz2ystb9e77tu` | `https://api.runpod.ai/v2/tkz2ystb9e77tu` | [open](https://console.runpod.io/serverless/user/endpoint/tkz2ystb9e77tu) |
-| faster-whisper | `m7wj9nadqy9v82` | `https://api.runpod.ai/v2/m7wj9nadqy9v82` | [open](https://console.runpod.io/serverless/user/endpoint/m7wj9nadqy9v82) |
-| OCR worker | `lsamu8q64cbso5` | `https://api.runpod.ai/v2/lsamu8q64cbso5` | [open](https://console.runpod.io/serverless/user/endpoint/lsamu8q64cbso5) |
+| Qwen2.5-7B-Instruct (vLLM) | `tkz2ystb9e77tu` | `https://api.runpod.ai/v2/tkz2ystb9e77tu/runsync` | [open](https://console.runpod.io/serverless/user/endpoint/tkz2ystb9e77tu) |
+| faster-whisper | `m7wj9nadqy9v82` | `https://api.runpod.ai/v2/m7wj9nadqy9v82/runsync` | [open](https://console.runpod.io/serverless/user/endpoint/m7wj9nadqy9v82) |
+| OCR worker | `lsamu8q64cbso5` | `https://api.runpod.ai/v2/lsamu8q64cbso5/runsync` | [open](https://console.runpod.io/serverless/user/endpoint/lsamu8q64cbso5) |
 
 - **Setup:** the API reads `RUNPOD_API_KEY`, `RUNPOD_LLM_ENDPOINT`, `RUNPOD_WHISPER_ENDPOINT` and `RUNPOD_OCR_ENDPOINT` from its environment (see [`backend/.env.example`](backend/.env.example)). Keys live in Render's environment settings, never in the code.
 - **Fallbacks:** every call has a short deadline, so a cold start falls back instead of making the person wait: Qwen → Gemini on the scrubbed text → the skills dictionary; RunPod OCR → OCR on the API server; Whisper → the browser's own speech input.
